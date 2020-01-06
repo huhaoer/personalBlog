@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人博客</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <!-- 引入vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--引入axios-->
+    <script src="./js/axios.js"></script>
+</head>
+<body>
+    <!-- 文章头部导航栏 -->
+    <header class="header">
+        <div class="container">
+            <a href="#" class="title">我的个人博客 | 技术博客</a>
+            <ul class="menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="sitemap.html">地图</a></li>
+                <li><a href="about.html">关于</a></li>
+                <li><a href="guestBook.html">留言</a></li>
+            </ul>
+            <div class="search_bar">
+                <input type="text" placeholder="输入关键词查找">
+                <button>提交</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 中间的主体内容,分为左右两大块 -->
+    <div class="content">
+        <!-- 左边内容 -->
+        <div class="content_left">
+            <!-- 左边 每日一句 -->
+            <div class="every_day" id="every_day">
+                <span>每日一句</span>
+                <p v-html="content"></p>
+                <p class="author">----{{author}}</p>
+            </div>
+
+            <!-- 左边 文章内容 -->
+            <div class="article_list" id="article_list">
+                <div class="article" v-for="(item,index) in articleList" :key="index">
+                    <a :href="item.link" class="article_tittle">{{item.title}}</a>
+                    <div class="article_content">{{item.content}}</div>
+                    <div class="article_foot">发布于{{item.date}} | 浏览({{item.views}}) | Tags：{{item.tag}}</div>
+                </div>
+            </div>
+        </div>
+        <!-- 右边内容 -->
+        <div class="content_right">
+            <!-- 随机标签云 -->
+            <div class="right_module" id="random_tag">
+                <div class="random_tag">随机标签云</div>
+                <div class="random_content">
+                    <a href="" v-for="(item,index) in tags" :key="index" :style="{color:getRandomColor(),fontSize:getRandomFont()}">{{item}}</a>
+                </div>
+            </div>
+            <!-- 最近热门 -->
+            <div class="right_module" id="new_hot">
+                <div class="random_tag">最近热门</div>
+                <ul class="recent_hot">
+                    <li v-for="(item,index) in titleList">
+                        <a :href="item.link">{{item.title}}</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- 最新评论 -->
+            <div class="right_module" id="new_comment">
+                <div class="random_tag">最新评论</div>
+                <ul class="recent_recommend">
+                    <li v-for="(item,index) in commentList" :key="index">
+                        <div>
+                            <span class="recommend_name">{{item.name}}</span>
+                            <span class="recommend_time">[{{item.date}}]</span>
+                        </div>
+                        <p>{{item.comment}}</p>
+                    </li>
+                </ul>
+            </div>
+            <!-- 友情链接 -->
+            <div class="right_module">
+                <div class="random_tag">友情链接</div>
+                <div class="friend_connect">
+                    <span><a href="">挨踢茶馆</a></span>
+                    <span><a href="">挨踢茶馆</a></span>
+                    <span><a href="">挨踢茶馆</a></span>
+                    <span><a href="">挨踢茶馆</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <footer class="footer">
+        <ul>
+            <li>C/C++</li>
+            <li>CSS/DIV</li>
+            <li>java</li>
+            <li>javacript</li>
+            <li>Linux</li>
+            <li>Mac</li>
+            <li>PC技术</li>
+            <li>PHP</li>
+            <li>Python</li>
+            <li>Raspberry</li>
+            <li>Ubuntu</li>
+            <li>wordpress</li>
+            <li>关于SEO分享经验</li>
+        </ul>
+        <p class="copy_right">Copyright © 2010-2019 郑晓个人博客 All rights reserved. 由免费开源的WordPress强力驱动. 鲁ICP备14017955号站长统计</p>
+    </footer>
+    <script src="./js/index.js"></script>
+    <script src="./js/base.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+/* content主要内容区样式 */
+.content > .content_left > .every_day{
+    background-color: #fff;
+    width: 100%;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: 3px 4px 3px #888;
+    padding: 10px 15px;
+    box-sizing: border-box;
+}
+.content > .content_left > .every_day::before{
+    font-family: 'myIcon';
+    content: '\e122';
+    color: slateblue;
+    font-size: 12px;
+    position: relative;
+    display: block;
+    height: 0px;
+    left: 54px;
+}
+.content > .content_left > .every_day > span{
+    font-size: 12px;
+    margin-bottom: 5px;
+    color: slateblue;
+    display: block;
+}
+.content > .content_left > .every_day .author{
+    text-align: right;
+}
+
+/* 文章样式 */
+.article_list{
+    width: 100%;
+    /* background-color: #ccc; */
+    margin-top: 25px;
+    /* border-radius: 5px; */
+    overflow: hidden;
+}
+.article_list .article{
+    width: 100%;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 1px 2px 2px #888;
+    overflow: hidden;
+    text-align: left;
+    margin-top: 15px;
+}
+.article_list .article .article_tittle{
+    text-decoration: none;
+    font-size: 20px;
+    color: #13102b;
+    padding: 20px 10px 5px 10px;
+    /* box-sizing: border-box; */
+}
+.article_list .article .article_tittle:hover{
+    color: #337ab7;
+}
+.article_list .article .article_content{
+    font-size: 14px;
+    color: #13102b;
+    text-align: left;
+    padding: 10px 10px 20px 10px;
+    overflow: hidden;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+.article_list .article .article_foot{
+    background-color: #1f1f1f;
+    color: #eee;
+    width: 100%;
+    padding: 5px 10px 5px 10px;
+}

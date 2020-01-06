@@ -1,0 +1,208 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+/* 引入每日一句字体样式 */
+@font-face {
+    font-family: 'myIcon';
+    src: url(../font/glyphicons-halflings-regular.woff2);
+}
+body{
+    background: url(../img/bg.jpg);
+    position: relative;
+    text-align: center;
+}
+.header{
+    width: 100%;
+    height: 50px;
+    background-color: #000;
+}
+.container{
+    position: relative;
+    width: 1200px;
+    /* background-color: red; */
+    height: 50px;
+    margin: 0 auto;
+    /* background-color: red; */
+}
+.container .title{
+    float: left;
+    color: #eeeeee;
+    line-height: 50px;
+    font-size: 18px;
+    margin: 0 15px;
+}
+.container .menu li{
+    float: left;
+    font-size: 14px;
+    width: 58px;
+    height: 50px;
+    line-height: 50px;
+}
+.container .menu li a{
+    color: #fff;
+}
+.search_bar >input{
+    position: absolute;
+    height: 22px;
+    padding: 5px 10px;
+    outline: none;
+    border: 1px solid #000;
+    border-radius: 5px;
+    top: 50%;
+    margin-top: -17px;
+    font-size: 14px;
+    right: 60px;
+}
+.search_bar > button{
+    width: 54px;
+    height: 34px;
+    position: absolute;
+    top: 50%;
+    margin-top: -18px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 1px solid #000;
+    outline: none;
+    right: 0;
+    color: #555555;
+    cursor: pointer;
+}
+
+/* 主体内容样式 */
+.content{
+    width: 1200px;
+    /* background-color: red; */
+    /* position: relative; */
+    margin: 30px auto 0px auto;
+    display: inline-block;
+}
+.content_left{
+    width: 66%;
+    float: left;
+    /* background-color: blue; */
+    padding: 0px 20px 0px 0px;
+    box-sizing: border-box;
+}
+.content_right{
+    width: 34%;
+    float: right;
+    /* background-color: yellow; */
+}
+
+/* 随机标签云 */
+.right_module{
+    width: 100%;
+    color: white;
+    background-color: #1f1f1f;
+    border-radius: 5px;
+    text-align: left;
+    margin-top: 20px;
+}
+.right_module:first-of-type{
+    margin-top: 0px;
+}
+.right_module .random_tag{
+    font-size: 14px;
+    text-align: left;
+    color: dodgerblue;
+    background-color: #191818;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 10px 0px 10px 15px;
+}
+.right_module .random_content{
+    padding: 15px;
+    font-size: 14px;
+    color: dodgerblue;
+    margin-right: 5px;
+}
+/* 最近热门 */
+.right_module .recent_hot li{
+    color: #fff;
+    padding: 8px 0px 8px 15px;
+    border-bottom: 1px solid #292929;
+}
+.right_module .recent_hot li a{
+    color: #fff;
+    font-size: 14px;
+}
+.right_module .recent_hot li a:hover{
+    color: rgb(51, 122, 183);
+}
+/* 最新评论 */
+.right_module .recent_recommend li{
+    padding: 8px 0px 8px 15px;
+    border-bottom: 1px solid #292929;
+}
+.right_module .recent_recommend li p{
+    font-size: 14px;
+    color: #777;
+}
+.right_module .recent_recommend li p:hover{
+    cursor: pointer;
+    color: rgb(51, 122, 183);
+}
+.right_module .recent_recommend li > div{
+    padding: 5px 0px;
+    position: relative;
+}
+.right_module .recent_recommend li > div .recommend_name{
+    font-size: 14px;
+    color: #fff;
+    font-weight: bold;
+}
+.right_module .recent_recommend li > div .recommend_time{
+    position: absolute;
+    right: 15px;
+}
+/* 友情链接 */
+.right_module .friend_connect{
+    padding: 0px 15px 0px 15px;
+}
+.right_module .friend_connect span{
+    display: inline-block;
+    width: 49%;
+    height: 30px;
+    margin-top: 10px;
+    box-sizing: border-box;
+    /* padding: ; */
+}
+.right_module .friend_connect span a{
+    color: #fff;
+    font-size: 14px;
+    line-height: 30px;
+}
+.right_module .friend_connect span a:hover{
+    color: rgb(51, 122, 183);
+}
+
+/* 底部footer样式 */
+.footer{
+    width: 100%;
+    height: 60px;
+    background-color: #191818;
+    text-align: center;
+    padding: 20px 0px;
+    /* box-sizing: border-box; */
+}
+.footer ul{
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+}
+.footer ul > li{
+    color: #a2a2a2;
+    float: left;
+    font-size: 14px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.footer .copy_right{
+    /* display: inline-block; */
+    color: #a2a2a2;
+    font-size: 14px;
+    margin-top: 10px;
+}

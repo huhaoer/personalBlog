@@ -1,0 +1,74 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+.map_title{
+    margin-top: 20px;
+    text-align: center;
+}
+.map_link{
+    border: 1px solid #eee;
+    width: 95%;
+    margin: 0 auto;
+    padding: 10px;
+    font-size: 14px;
+    margin-top: 15px;
+}
+.map_link > a{
+    color: #000;
+}
+.map_article{
+    border: 1px solid #eee;
+    width: 95%;
+    margin: 0 auto;
+    padding: 10px;
+    margin-top: 15px;
+}
+.map_article > span{
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.map_article > ul {
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+.map_article > ul > li{
+    height: 20px;
+    list-style-type: disc;
+    /* border: 1px solid blue; */
+    padding: 8px 0px;
+    line-height: 20px;
+}
+.map_article > ul > li > a{
+    font-size: 14px;
+    color: #000;
+}
+.map_foot{
+    border: 1px solid #eee;
+    width: 95%;
+    margin: 0 auto;
+    padding: 10px;
+    margin-top: 15px;
+}
+.map_foot > p > a{
+    color: #000;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 10px;
+    text-decoration: #000 underline;
+}
+.map_time{
+    font-size: 14px;
+    text-align: center;
+    margin-top: 15px;
+}
+.map_person{
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+}
