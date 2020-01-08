@@ -8,6 +8,10 @@
     <title>个人博客</title>
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/guestbook.css">
+    <!-- 引入vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--引入axios-->
+    <script src="./js/axios.js"></script>
 </head>
 
 <body>
@@ -70,47 +74,32 @@
         </div>
         <!-- 右边内容 -->
         <div class="content_right">
-            <div class="right_module">
+            <!-- 随机标签云 -->
+            <div class="right_module" id="random_tag">
                 <div class="random_tag">随机标签云</div>
                 <div class="random_content">
-                    <a href="">aaa</a>
-                    <a href="">sss</a>
-                    <a href="">ddd</a>
-                    <a href="">fff</a>
+                    <a href="" v-for="(item,index) in tags" :key="index" :style="{color:getRandomColor(),fontSize:getRandomFont()}">{{item}}</a>
                 </div>
             </div>
-            <div class="right_module">
+            <!-- 最近热门 -->
+            <div class="right_module" id="new_hot">
                 <div class="random_tag">最近热门</div>
                 <ul class="recent_hot">
-                    <li><a href="">使用码云git的webhook实现生产环境代</a></li>
-                    <li><a href="">VirtualBox压缩vmdk、vagrant打包b</a></li>
-                    <li><a href="">查看你的AWS服务器已使用流量</a></li>
-                    <li><a href="">树莓派安装homebridge小记</a></li>
+                    <li v-for="(item,index) in titleList">
+                        <a :href="item.link">{{item.title}}</a>
+                    </li>
                 </ul>
             </div>
-            <div class="right_module">
+            <!-- 最新评论 -->
+            <div class="right_module" id="new_comment">
                 <div class="random_tag">最新评论</div>
                 <ul class="recent_recommend">
-                    <li>
+                    <li v-for="(item,index) in commentList" :key="index">
                         <div>
-                            <span class="recommend_name">李庆林</span>
-                            <span class="recommend_time">[3天前]</span>
+                            <span class="recommend_name">{{item.name}}</span>
+                            <span class="recommend_time">[{{item.date}}]</span>
                         </div>
-                        <p>非常感谢，百度了很久都没解决</p>
-                    </li>
-                    <li>
-                        <div>
-                            <span class="recommend_name">李庆林</span>
-                            <span class="recommend_time">[3天前]</span>
-                        </div>
-                        <p>非常感谢，百度了很久都没解决</p>
-                    </li>
-                    <li>
-                        <div>
-                            <span class="recommend_name">李庆林</span>
-                            <span class="recommend_time">[3天前]</span>
-                        </div>
-                        <p>非常感谢，百度了很久都没解决</p>
+                        <p>{{item.comment}}</p>
                     </li>
                 </ul>
             </div>
@@ -146,6 +135,7 @@
         <p class="copy_right">Copyright © 2010-2019 郑晓个人博客 All rights reserved. 由免费开源的WordPress强力驱动. 鲁ICP备14017955号站长统计
         </p>
     </footer>
+    <script src="./js/base.js"></script>
 </body>
 
 </html>

@@ -1,3 +1,4 @@
+
 // 每日一句
 let everyDay = new Vue({
     el: '#every_day',
@@ -24,39 +25,50 @@ let everyDay = new Vue({
 let articleList = new Vue({
     el: '#article_list',
     data: {
-        articleList: [//文章列表数组
-            {
-                title: "最近的状态",
-                content: "使用php内置的hexdec函数在把超大的十六进制转换到十进制整型表示时，结果值如果超出平台整型的最大值时，可能会丢失精度，比如 0xFFFFFFFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000000FFFFFFFFFFFFFFFF 在Python中，使用int(‘FFFFFFFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000000FFFFFFFFFFFFFFFF’, 16)计算结果是1157920892103562487564203452140208927662503539",
-                date: "2019-06-24",
-                views: "2,624",
-                tag: "hexdec huuhu",
-                link: "http://www.baidu.com"
-            },
-            {
-                title: "最近的状态",
-                content: "使用php内置的hexdec函数在把超大的十六进制转换到十进制整型表示时，结果值如果超出平台整型的最大值时，可能会丢失精度，比如 0xFFFFFFFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000000FFFFFFFFFFFFFFFF 在Python中，使用int(‘FFFFFFFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000000FFFFFFFFFFFFFFFF’, 16)计算结果是1157920892103562487564203452140208927662503539",
-                date: "2019-06-24",
-                views: "2,624",
-                tag: "hexdec huuhu",
-                link: ""
-            },
-            {
-                title: "最近的状态",
-                content: "使用php内置的hexdec函数在把超大的十六进制转换到十进制整型表示时，结果值如果超出平台整型的最大值时，可能会丢失精度，比如 0xFFFFFFFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000000FFFFFFFFFFFFFFFF 在Python中，使用int(‘FFFFFFFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000000FFFFFFFFFFFFFFFF’, 16)计算结果是1157920892103562487564203452140208927662503539",
-                date: "2019-06-24",
-                views: "2,624",
-                tag: "hexdec huuhu",
-                link: ""
-            },
-            {
-                title: "最近的状态",
-                content: "使用php内置的hexdec函数在把超大的十六进制转换到十进制整型表示时，结果值如果超出平台整型的最大值时，可能会丢失精度，比如 0xFFFFFFFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000000FFFFFFFFFFFFFFFF 在Python中，使用int(‘FFFFFFFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000000FFFFFFFFFFFFFFFF’, 16)计算结果是1157920892103562487564203452140208927662503539",
-                date: "2019-06-24",
-                views: "2,624",
-                tag: "hexdec huuhu",
-                link: ""
-            },
-        ]
+        page: 1,//当前查看的页数
+        pageSize: 5,//每一页的数量
+        count: null,//博客总数
+        articleList: [],//文章列表数组
+    },
+    computed: {
+        //计算属性中根据page和pageSize请求数据
+        getPage() {
+            return function (page,pageSize) {
+                axios({
+                    method: 'get',
+                    url: '/queryBlogByPage?page=' + (page - 1) + '&pageSize=' + pageSize
+                })
+                    .then(res => {
+                        this.articleList = res.data.data;//获取当页博客列表
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
+            }
+        },
+
+    },
+    created() {
+        this.getPage(this.page,this.pageSize);
+        this.getCount();
+    },
+    methods: {
+        pageChange(p) {
+            this.page = p;
+            this.getPage(this.page,this.pageSize)
+        },
+        getCount() {
+            //查询博客总数
+            axios({
+                method: 'get',
+                url: '/queryBlogCount'
+            })
+                .then(res => {
+                    articleList.count = res.data.data[0].count;//初始化count
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
     }
 })

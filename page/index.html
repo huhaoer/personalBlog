@@ -8,9 +8,13 @@
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/index.css">
     <!-- 引入vue -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./js/vue.js"></script>
     <!--引入axios-->
     <script src="./js/axios.js"></script>
+    <!-- 引入样式 element ui -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 element ui-->
+    <script src="./js/element.js"></script>
 </head>
 <body>
     <!-- 文章头部导航栏 -->
@@ -44,9 +48,18 @@
             <!-- 左边 文章内容 -->
             <div class="article_list" id="article_list">
                 <div class="article" v-for="(item,index) in articleList" :key="index">
-                    <a :href="item.link" class="article_tittle">{{item.title}}</a>
-                    <div class="article_content">{{item.content}}</div>
-                    <div class="article_foot">发布于{{item.date}} | 浏览({{item.views}}) | Tags：{{item.tag}}</div>
+                    <a :href="item.id" class="article_tittle">{{item.title}}</a>
+                    <div class="article_content">{{item.content}}...</div>
+                    <div class="article_foot">发布于{{item.ctime}} | 浏览({{item.views}}) | Tags：{{item.tags}}</div>
+                </div>
+                <div class="pagination">
+                    <el-pagination
+                            background
+                            layout="prev, pager, next"
+                            @current-change="pageChange"
+                            :page-size="pageSize"
+                            :total="count">
+                    </el-pagination>
                 </div>
             </div>
         </div>

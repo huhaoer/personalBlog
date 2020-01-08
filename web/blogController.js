@@ -32,8 +32,38 @@ function editBlog(request,response) {
         })
     })
 }
+path.set("/editBlog",editBlog);
 
-//2.查询编辑博客时标签是否存在
+//2.根据页数查询博客
+function queryBlogByPage(request,response) {
+    let params = url.parse(request.url,true).query;
+    let pPage = parseInt(params.page);//获取page参数转化为数字
+    let pPageSize = parseInt(params.pageSize);//获取每页数量转化为数字
+    blogDao.queryBlogByPage(pPage,pPageSize,function (result) {
+        //对查询的博客数组处理
+        for (let i = 0 ; i < result.length; i ++) {
+            result[i].content = result[i].content.replace(/<img[\w\W]*">/,"");//处理base64图片字符串
+            result[i].content = result[i].content.replace(/<[\w\W]{1,50}>/g,"");//处理1-50个字符的标签
+            result[i].content = result[i].content.substring(0,300);//content内容显示300个字符
+        }
+        response.writeHead(200,{"Content-Type":"text/html;charset=utf-8"});
+        response.write(responseUtil.writeResponse("success","查询成功",result));
+        response.end();
+    })
+}
+path.set("/queryBlogByPage",queryBlogByPage);
+
+//3.查询博客总数
+function queryBlogCount(request,response) {
+    blogDao.queryBlogCount(function (result) {
+        response.writeHead(200,{"Content-Type":"text/html;charset=utf-8"});
+        response.write(responseUtil.writeResponse("success","查询成功",result));
+        response.end();
+    })
+}
+path.set("/queryBlogCount",queryBlogCount);
+
+//查询编辑博客时标签是否存在
 function queryTag(tag,blogId) {
     tagsDao.queryTag(tag,function (result) {
         //tag表中没有该tag,新增一条tag
@@ -44,7 +74,7 @@ function queryTag(tag,blogId) {
         }
     })
 }
-//3.新增加一条tag到tags表中
+//新增加一条tag到tags表中
 function insertTag(tag,blogId) {
     tagsDao.insertTag(tag,timeUtil.getNowTime(),timeUtil.getNowTime(),function(result) {
         // 创建标签后在插入一条tag和blog的映射关系
@@ -52,10 +82,10 @@ function insertTag(tag,blogId) {
     })
 }
 
-//4.新增加一条tag和blog映射关系的数据
+//新增加一条tag和blog映射关系的数据
 function insertTagBlogMapping(tagId,blogId) {
     tagBlogMappingDao.insertTagBlogMapping(tagId,blogId,timeUtil.getNowTime(),timeUtil.getNowTime(),function(result) {})
 }
 
-path.set("/editBlog",editBlog);
+
 module.exports.path = path;
