@@ -63,6 +63,19 @@ function queryBlogCount(request,response) {
 }
 path.set("/queryBlogCount",queryBlogCount);
 
+//4.根据博客id查询详情
+function queryBlogById(request,response) {
+    let { bid } = url.parse(request.url,true).query;
+    let numBid = parseInt(bid);
+    blogDao.queryBlogById(numBid,function (result) {
+        console.log()
+        response.writeHead(200,{"Content-Type":"text/html;charset=utf-8"});
+        response.write(responseUtil.writeResponse("success","查询成功",result));
+        response.end();
+    })
+}
+path.set("/queryBlogById",queryBlogById);
+
 //查询编辑博客时标签是否存在
 function queryTag(tag,blogId) {
     tagsDao.queryTag(tag,function (result) {

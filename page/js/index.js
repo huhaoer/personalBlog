@@ -39,7 +39,16 @@ let articleList = new Vue({
                     url: '/queryBlogByPage?page=' + (page - 1) + '&pageSize=' + pageSize
                 })
                     .then(res => {
-                        this.articleList = res.data.data;//获取当页博客列表
+                        //对返回的列表处理,添加link属性
+                        let data = res.data.data
+                        if (data.length == 0) {
+                            return
+                        }
+                        data.forEach(item => {
+                            item["link"] = "http://localhost:18459/blogDetail.html?bid=" + item.id;//对link地址进行拼接
+                        })
+                        this.articleList = data;//获取当页博客列表
+                        console.log(this.articleList)
                     })
                     .catch(err => {
                         console.log(err)

@@ -48,9 +48,25 @@ function queryBlogCount(success) {
     connection.end();
 }
 
+//4.根据博客id查询详情
+function queryBlogById(blogId,success) {
+    let sql = 'select * from blog where id = ?;';
+    let params = [blogId];
+    let connection = dbutil.createConnection();
+    connection.connect();//连接
+    connection.query(sql,params,function(error,result) {
+        if (error == null) {
+            success(result)
+        }else{
+            throw error
+        }
+    })
+    connection.end();
+}
 
 module.exports = {
     "editBlog": editBlog,
     "queryBlogByPage":queryBlogByPage,
-    "queryBlogCount":queryBlogCount
+    "queryBlogCount":queryBlogCount,
+    "queryBlogById": queryBlogById
 }
