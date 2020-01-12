@@ -16,6 +16,8 @@ app.get('/queryBlogById',loader.get('/queryBlogById'))//根据博客id查询详�
 
 app.get('/addComment',loader.get('/addComment'))//添加一条评论
 app.get('/getRandomCode',loader.get('/getRandomCode'));//获取随机验证码
+app.get('/queryBlogListByBlogId',loader.get('/queryBlogListByBlogId'));//查看博客评论列表
+app.get('/queryBlogCountByBlogId',loader.get('/queryBlogCountByBlogId'));//查看博客的数量
 
 app.listen(globalConf['port'],function () {
     console.log('服务已启动')

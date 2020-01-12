@@ -1,49 +1,4 @@
 /**
- *  博客详情
- **/
-let blogDetail = new Vue({
-    el: '#blog_detail',
-    data: {
-        blogMes:{},//博客数据对象
-        author: 'layoung',//作者,默认都为layoung
-    },
-    computed:{
-        //获取当前博客id
-        getBlogId() {
-            let hrefStr = location.search;
-            let searchParams = hrefStr.indexOf('?') > -1 ? hrefStr.split('?')[1].split('&') : "";//判断参数是否带? 然后拆分取后面的参数字段
-            if (searchParams == "") {
-                return;//没有携带参数  直接返回
-            }
-            let bid;//博客id
-            for(let i = 0; i < searchParams.length; i ++) {
-                if (searchParams[i].split('=')[0] == "bid") {
-                    try {
-                        bid = searchParams[i].split('=')[1];//根据url 获取传递的bid值
-                    }catch(e) {
-                        console.log(e)
-                    }
-
-                }
-            }
-            return bid;//返回bid
-        }
-    },
-    created() {
-        this.getBlogDetail(this.getBlogId)
-    },
-    methods: {
-        async getBlogDetail(bid) {
-            let detailMes = await axios({
-                method: 'get',
-                url: '/queryBlogById?bid=' + bid
-            });
-            this.blogMes = detailMes.data.data[0]
-        }
-    }
-})
-
-/**
  *  发表博客评论
  **/
 let sendComment = new Vue({
@@ -59,22 +14,7 @@ let sendComment = new Vue({
     computed: {
         //获取当前博客id
         getBlogId() {
-            let hrefStr = location.search;
-            let searchParams = hrefStr.indexOf('?') > -1 ? hrefStr.split('?')[1].split('&') : "";//判断参数是否带? 然后拆分取后面的参数字段
-            if (searchParams == "") {
-                return;//没有携带参数  直接返回
-            }
-            let bid;//博客id
-            for(let i = 0; i < searchParams.length; i ++) {
-                if (searchParams[i].split('=')[0] == "bid") {
-                    try {
-                        bid = searchParams[i].split('=')[1];//根据url 获取传递的bid值
-                    }catch(e) {
-                        console.log(e)
-                    }
-
-                }
-            }
+            let bid = -2;//博客id 留言页面默认为-2
             return bid;//返回bid
         },
 
@@ -183,22 +123,7 @@ let blogComments = new Vue({
     computed:{
         //获取当前博客id
         getBlogId() {
-            let hrefStr = location.search;
-            let searchParams = hrefStr.indexOf('?') > -1 ? hrefStr.split('?')[1].split('&') : "";//判断参数是否带? 然后拆分取后面的参数字段
-            if (searchParams == "") {
-                return;//没有携带参数  直接返回
-            }
-            let bid;//博客id
-            for(let i = 0; i < searchParams.length; i ++) {
-                if (searchParams[i].split('=')[0] == "bid") {
-                    try {
-                        bid = searchParams[i].split('=')[1];//根据url 获取传递的bid值
-                    }catch(e) {
-                        console.log(e)
-                    }
-
-                }
-            }
+            let bid = -2;//博客id 留言页面默认为-2
             return bid;//返回bid
         },
     },

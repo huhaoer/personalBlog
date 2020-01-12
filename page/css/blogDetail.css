@@ -162,6 +162,33 @@ hr{
     top: 0;
     border-radius: 5px 0 0 5px;
 }
+/* 评论部分样式 */
+.content .content_left .blog_comments{
+    width: 100%;
+    /* background-color: pink; */
+}
+.content .content_left .blog_comments .blog_comments_msg{
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    text-align: left;
+    margin-top: 20px;
+    color: #333;
+}
+.content .content_left .blog_comments .blog_comment{
+    width: 100%;
+    background-color: #d9edf7;
+    border: 1px dashed #7ca4c1;
+    padding: 10px 10px 20px 30px;
+    text-align: left;
+    margin-top: 10px;
+    color: #31708f;
+    font-size: 18px;
+    box-sizing: border-box;
+}
+.content .content_left .blog_comments .blog_comment div{
+    margin-top: 10px;
+}
 
 
 
