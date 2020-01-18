@@ -68,13 +68,22 @@ function queryBlogById(request,response) {
     let { bid } = url.parse(request.url,true).query;
     let numBid = parseInt(bid);
     blogDao.queryBlogById(numBid,function (result) {
-        console.log()
         response.writeHead(200,{"Content-Type":"text/html;charset=utf-8"});
         response.write(responseUtil.writeResponse("success","查询成功",result));
         response.end();
     })
 }
 path.set("/queryBlogById",queryBlogById);
+
+//5.地图页面查询博客列表
+function getAllBlog(request,response) {
+    blogDao.getAllBlog(function (result) {
+        response.writeHead(200,{"Content-Type":"text/html;charset=utf-8"});
+        response.write(responseUtil.writeResponse("success","查询成功",result));
+        response.end();
+    })
+}
+path.set('/getAllBlog',getAllBlog);
 
 //查询编辑博客时标签是否存在
 function queryTag(tag,blogId) {

@@ -64,9 +64,26 @@ function queryBlogById(blogId,success) {
     connection.end();
 }
 
+//5.地图页面查询博客列表
+function getAllBlog(success) {
+    let sql = 'select * from blog order by id desc;';
+    let params = [];
+    let connection = dbutil.createConnection();
+    connection.connect();//连接
+    connection.query(sql,params,function(error,result) {
+        if (error == null) {
+            success(result)
+        }else{
+            throw error
+        }
+    })
+    connection.end();
+}
+
 module.exports = {
     "editBlog": editBlog,
     "queryBlogByPage":queryBlogByPage,
     "queryBlogCount":queryBlogCount,
-    "queryBlogById": queryBlogById
+    "queryBlogById": queryBlogById,
+    "getAllBlog": getAllBlog
 }

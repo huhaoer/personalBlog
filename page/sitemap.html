@@ -6,34 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>个人博客</title>
     <link rel="stylesheet" href="./css/sitemap.css">
+    <!-- 引入vue -->
+    <script src="./js/vue.js"></script>
+    <!--引入axios-->
+    <script src="./js/axios.js"></script>
 </head>
 <body>
     <h2 class="map_title">个人博客's SiteMap</h2>
     <div class="map_link"><a href="index.html"><b>个人博客</b></a> » 站点地图</div>
-    <div class="map_article">
+    <div class="map_article" id="map_article">
         <span>最新文章</span>
         <ul>
-            <li><a href="#">php 验证身份证号</a></li>
-            <li><a href="#">php 验证身份证号</a></li>
-            <li><a href="#">php 验证身份证号</a></li>
-            <li><a href="#">php 验证身份证号</a></li>
-            <li><a href="#">php 验证身份证号</a></li>
-            <li><a href="#">php 验证身份证号</a></li>
-            <li><a href="#">php 验证身份证号</a></li>
-            <li><a href="#">php 验证身份证号</a></li>
-            <li><a href="#">php 验证身份证号</a></li>
-            <li><a href="#">php 验证身份证号</a></li>
-            <li><a href="#">php 验证身份证号</a></li>
-            <li><a href="#">php 验证身份证号</a></li>
-            <li><a href="#">php 验证身份证号</a></li>
-            <li><a href="#">php 验证身份证号</a></li>
-            <li><a href="#">php 验证身份证号</a></li>
-            <li><a href="#">php 验证身份证号</a></li>
-            <li><a href="#">php 验证身份证号</a></li>
-            <li><a href="#">【拉登已死第二季】拉登和奥巴马爱情，原来最伟大的爱是放手啊</a></li>
-            <li><a href="#">【拉登已死第二季】拉登和奥巴马爱情，原来最伟大的爱是放手啊</a></li>
-            <li><a href="#">【拉登已死第二季】拉登和奥巴马爱情，原来最伟大的爱是放手啊</a></li>
-            <li><a href="#">【拉登已死第二季】拉登和奥巴马爱情，原来最伟大的爱是放手啊</a></li>
+            <li v-for="item in blogList" :key="item.id"><a :href="item.link">{{item.title}}</a></li>
         </ul>
     </div>
     <div class="map_foot">
@@ -41,5 +25,6 @@
     </div>
     <p class="map_time">Baidu-SiteMap Latest Update: 2019-11-09 10:37:07</p>
     <p class="map_person">Powered by Baidu SiteMap Generator © 2008-2015 柳城</p>
+    <script src="./js/sitemap.js"></script>
 </body>
 </html>

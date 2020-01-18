@@ -19,6 +19,8 @@ app.get('/getRandomCode',loader.get('/getRandomCode'));//获取随机验证码
 app.get('/queryBlogListByBlogId',loader.get('/queryBlogListByBlogId'));//查看博客评论列表
 app.get('/queryBlogCountByBlogId',loader.get('/queryBlogCountByBlogId'));//查看博客的数量
 
+app.get('/getAllBlog',loader.get('/getAllBlog'));//查看地图页面博客列表
+
 app.listen(globalConf['port'],function () {
     console.log('服务已启动')
 })
